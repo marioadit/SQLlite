@@ -1,0 +1,72 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SQLlite.MainPage"
+             Title=" Categories"
+             BackgroundColor="{DynamicResource Light}">
+
+    <Grid Padding="10" RowSpacing="10" ColumnSpacing="5"
+          RowDefinitions="Auto,Auto,Auto,*,Auto">
+
+        <!-- Entry for Category Name -->
+        <Entry x:Name="NameEntry"
+               Placeholder="Enter category name"
+               Grid.Row="0"
+               Margin="0,0,0,10" />
+
+        <!-- Entry for Category Description -->
+        <Entry x:Name="DescriptionEntry"
+               Placeholder="Enter category description"
+               Grid.Row="1"
+               Margin="0,0,0,10" />
+
+        <!-- Button to Add Category -->
+        <Button Text="Add Category"
+                Grid.Row="2"
+                Clicked="OnAddCategoryClicked"
+                BackgroundColor="Green"
+                TextColor="White"
+                Margin="0,10,0,10" />
+
+        <!-- CollectionView to Display Categories -->
+        <CollectionView Grid.Row="3"
+                        x:Name="CategoriesCollectionView" 
+                        Margin="10"
+                        SelectionMode="Single"
+                        SelectionChanged="OnCategorySelected">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout Padding="10">
+                        <Label Text="{Binding Id, StringFormat='ID: {0}'}" 
+                               FontSize="Medium" 
+                               TextColor="{StaticResource Primary}" />
+                        <Label Text="{Binding Name, StringFormat='Name: {0}'}" 
+                               FontSize="Small" 
+                               TextColor="{StaticResource Secondary}" />
+                        <Label Text="{Binding Description, StringFormat='Description: {0}'}" 
+                               FontSize="Small" 
+                               FontAttributes="Italic" 
+                               TextColor="{StaticResource Tertiary}" />
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Buttons for Update and Delete -->
+        <StackLayout Grid.Row="4" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,5" Spacing="10">
+            <Button Text="Update Selected"
+                    HorizontalOptions="FillAndExpand"
+                    Clicked="OnUpdateSelectedCategoryClicked"
+                    BackgroundColor="Blue"
+                    TextColor="White" />
+            <Button Text="Delete Selected"
+                    HorizontalOptions="FillAndExpand"
+                    Clicked="OnDeleteSelectedCategoryClicked"
+                    BackgroundColor="Red"
+                    TextColor="White" />
+        </StackLayout>
+
+    </Grid>
+</ContentPage>

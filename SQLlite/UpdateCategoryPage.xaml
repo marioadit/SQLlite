@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SQLlite.UpdateCategoryPage"
+             Title="Update Category"
+             BackgroundColor="{DynamicResource Light}">
+
+    <Grid Padding="10" RowSpacing="10" ColumnSpacing="5"
+          RowDefinitions="Auto,Auto,Auto,Auto">
+
+        <!-- Entry for Category Name -->
+        <Entry x:Name="NameEntry"
+               Placeholder="Enter category name"
+               Grid.Row="0"
+               Margin="0,0,0,10" />
+
+        <!-- Entry for Category Description -->
+        <Entry x:Name="DescriptionEntry"
+               Placeholder="Enter category description"
+               Grid.Row="1"
+               Margin="0,0,0,10" />
+
+        <!-- Button to Save Updated Category -->
+        <Button Text="Save Changes"
+                Grid.Row="2"
+                Clicked="OnSaveChangesClicked"
+                BackgroundColor="Green"
+                TextColor="White" />
+    </Grid>
+</ContentPage>
